@@ -1,0 +1,19 @@
+import java.util.Scanner;
+public class PalindromeNumber {
+    public static boolean isPalindrome(int number) {
+        String numStr = Integer.toString(number);
+        String reverseStr = new StringBuilder(numStr).reverse().toString();
+        return numStr.equals(reverseStr);
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int userInput = scanner.nextInt();
+        if (isPalindrome(userInput)) {
+            System.out.println(userInput + " is a palindrome number");
+        } else {
+            System.out.println(userInput + " is not a palindrome number.");
+        }
+        scanner.close();
+    }
+}

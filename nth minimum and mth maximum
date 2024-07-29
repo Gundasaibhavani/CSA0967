@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+class NumberList {
+    private List<Integer> numbers;
+    public NumberList() {
+        numbers = new ArrayList<>();
+    }
+    public void addNumber(int number) {
+        numbers.add(number);
+    }
+    public Integer getNthMinimum(int n) {
+        if (n <= 0 || n > numbers.size()) {
+            return null;
+        }
+        Collections.sort(numbers);
+        return numbers.get(n - 1);
+    }
+    public Integer getMthMaximum(int m) {
+        if (m <= 0 || m > numbers.size()) {
+            return null;
+        }
+        Collections.sort(numbers, Collections.reverseOrder());
+        return numbers.get(m - 1);
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        NumberList numberList = new NumberList();
+        System.out.println("Enter numbers (type 'done' to finish):");
+        while (scanner.hasNextInt()) {
+            numberList.addNumber(scanner.nextInt());
+        }
+        scanner.nextLine(); 
+        System.out.print("Enter the value of n for nth minimum: ");
+        int n = scanner.nextInt();
+        System.out.print("Enter the value of m for mth maximum: ");
+        int m = scanner.nextInt();
+        Integer nthMinimum = numberList.getNthMinimum(n);
+        Integer mthMaximum = numberList.getMthMaximum(m);
+        if (nthMinimum != null) {
+            System.out.println("The " + n + "th minimum value is: " + nthMinimum);
+        } else {
+            System.out.println("Invalid value for n.");
+        }
+        if (mthMaximum != null) {
+            System.out.println("The " + m + "th maximum value is: " + mthMaximum);
+        } else {
+            System.out.println("Invalid value for m.");
+        }
+        scanner.close();
+    }
+}

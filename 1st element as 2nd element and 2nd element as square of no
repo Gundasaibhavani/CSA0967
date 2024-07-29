@@ -1,0 +1,18 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the first element: ");
+        int firstElement = scanner.nextInt();
+        System.out.print("Enter the second element: ");
+        int secondElement = scanner.nextInt();
+        int[] array = {firstElement, secondElement};
+        System.out.print("Enter the number to be squared: ");
+        int numberToSquare = scanner.nextInt();
+        int temp = array[0];
+        array[0] = array[1];
+        array[1] = temp;
+        array[1] = numberToSquare * numberToSquare;
+        System.out.println("Modified array: " + array[0] + ", " + array[1]);
+    }
+}
